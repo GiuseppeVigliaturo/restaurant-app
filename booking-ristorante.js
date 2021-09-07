@@ -9,7 +9,7 @@ Booking.messageStatus = document.getElementById("message-status");
 (async function costruisciSala(){
     Booking.sala = await fetch('sala.json');
     Booking.sala = await Booking.sala.json();
-    console.log(Booking.sala);
+    //console.log(Booking.sala);
     Booking.tavoli = await Booking.sala.tavoli;
     disponiTavoli(Booking.tavoli);
 })();
@@ -25,3 +25,26 @@ function disponiTavoli(tavoli) {
         Booking.tavoliW.appendChild(tavoloDOM);
     });
 }
+
+//Gestione numero persone da prenotare
+Booking.numeroPersoneW.addEventListener('click', (e) => {
+    e.preventDefault();
+    let numeroPersone = +Booking.numeroPersone.textContent;
+    if (e.target.id== 'add'){
+        Booking.numeroPersone.textContent = numeroPersone + 1;
+    }else if(e.target.id== 'sub' && numeroPersone > 1){
+        Booking.numeroPersone.textContent = numeroPersone - 1;
+    }
+});
+
+//Gestione selezione tavolo da prenotare
+Booking.tavoliW.addEventListener('click', (e) => {
+    e.preventDefault();
+    let selezionato = +e.target.textContent;
+    console.log(selezionato);
+    if (Booking.tavoli[selezionato-1].occupato) {
+        Booking.messageStatus.textContent = `il tavolo ${selezionato} è occupato`
+    } else {
+        Booking.tavoloSelezionato.textContent = selezionato;
+    }
+});
