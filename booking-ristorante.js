@@ -48,3 +48,31 @@ Booking.tavoliW.addEventListener('click', (e) => {
         Booking.tavoloSelezionato.textContent = selezionato;
     }
 });
+
+//Gestione Invio Prenotazione
+document.forms[0].addEventListener('submit', (e)=> {
+    e.preventDefault();
+    if (Booking.tavoloSelezionato.textContent == '-') {
+        Booking.messageStatus.textContent = `è necessario selezionare un tavolo`;
+        return;
+    }
+    sendBooking();
+})
+
+function sendBooking() {
+    let bookingForm = new FormData();
+    //l'oggetto formData ci consente di creare le coppie chiave valore cosi da poterle spedire con l'api fetch
+    bookingForm.append('numero-persone', +Booking.numeroPersone.textContent);
+    bookingForm.append('tavolo', +Booking.tavoloSelezionato.textContent);
+    bookingForm.append('nome', document.forms[0].nome.value);
+    bookingForm.append('email', document.forms[0].email.value);
+
+    // invio la prenotazione
+    // fetch('bookingScript', {
+    //     body: bookingForm,
+    //     method: 'post'
+    // });
+
+    Booking.messageStatus.textContent = 'La prenotazione è andata a buon fine';
+    document.forms[0].reset();
+}
