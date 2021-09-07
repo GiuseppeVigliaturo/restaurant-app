@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
@@ -22,15 +23,15 @@
             </div>
         </section>
 
-        <section id="tavolo-w">
-            <div class="tavolo x6 libero">2</div>
-            <div class="tavolo x2 libero">1</div>
-            <div class="tavolo x6 libero">3</div>
-            <div class="tavolo x6 libero">5</div>
-            <div class="tavolo x4 libero">8</div>
+        <section id="tavoli-w">
+            <div class="tavolo x6 libero">1</div>
+            <div class="tavolo x2 libero">2</div>
+            <div class="tavolo x6 occupato">3</div>
             <div class="tavolo x6 libero">4</div>
-            <div class="tavolo x4 libero">1</div>
-            <div class="tavolo x6 libero">2</div>
+            <div class="tavolo x4 libero">5</div>
+            <div class="tavolo x6 occupato">6</div>
+            <div class="tavolo x4 libero">7</div>
+            <div class="tavolo x6 libero">8</div>
 
         </section>
         <p id="message-status"></p>
@@ -41,7 +42,7 @@
 
             <input type="email" name="email" class="input" placeholder="Email" required>
 
-            <input type="submit" class="btn-prenota" value="PRENOTA">
+            <input type="submit" class="btn btn-prenota" value="PRENOTA">
         </form>
     </main>
 
